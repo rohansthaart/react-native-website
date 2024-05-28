@@ -61,6 +61,19 @@ const icon = this.props.active
   ? require('./my-icon-active.png')
   : require('./my-icon-inactive.png');
 <Image source={icon} />;
+
+
+// BETTER
+
+const images = {
+  active: require('./my-icon-active.png'),
+  inactive: require('./my-icon-inactive.png'),
+};
+
+const icon = active ? images.active : images.inactive;
+return (
+    <Image source={icon} />
+  );
 ```
 
 Note that image sources required this way include size (width, height) info for the Image. If you need to scale the image dynamically (i.e. via flex), you may need to manually set `{width: undefined, height: undefined}` on the style attribute.
